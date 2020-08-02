@@ -6,24 +6,114 @@ include"..\include/conexion.php";
 //$where="";
 $busqueda ='';
 $categoria='';
- 	if(empty($_REQUEST['busqueda']) && empty($_REQUEST['categoria']))
+$fecha_de='';
+$fecha_a='';
+/*funciona*/ if(empty($_REQUEST['busqueda']) && empty($_REQUEST['categoria']) && empty($_REQUEST['fecha_de']) && empty($_REQUEST['fecha_a']))
 			{
 				header("Location: producto.php");
 
 			}
-			if(!empty($_REQUEST['busqueda'])){
+/*funciona*/if(!empty($_REQUEST['busqueda']) && empty($_REQUEST['categoria']) && empty($_REQUEST['fecha_de']) && empty($_REQUEST['fecha_a'])){
 
 				$busqueda= $_REQUEST['busqueda'];
 				$where= "P.Nombre_Producto like '$busqueda%'";
 				$buscar= 'busqueda='.$busqueda;
 				
+/*funciona*/			}
+			if(!empty($_REQUEST['busqueda']) && !empty($_REQUEST['categoria']) && empty($_REQUEST['fecha_de']) && empty($_REQUEST['fecha_a'])){
+				$busqueda= $_REQUEST['busqueda'];
+				$categoria= $_REQUEST['categoria'];
+				$where= "P.Nombre_Producto like '$busqueda%' and P.Codigo_categoria = $categoria";
+				$buscar= 'busqueda='.$busqueda.'&'.'categoria='.$categoria;
+
 			}
-			if(!empty($_REQUEST['categoria'])){
+/*funciona*/if(!empty($_REQUEST['categoria']) && empty($_REQUEST['busqueda'])&& empty($_REQUEST['fecha_de']) && empty($_REQUEST['fecha_a']) )
+			{
 
 				$categoria=$_REQUEST['categoria'];
 				$where="P.Codigo_categoria = $categoria ";
 				$buscar='categoria='.$categoria;
 			}
+
+			/*PARA LA FECHA*/
+if(!empty($_REQUEST['fecha_de']) && !empty($_REQUEST['fecha_a'])
+&& empty($_REQUEST['busqueda']) && empty($_REQUEST['categoria']) ){
+
+	$fecha_de= $_REQUEST['fecha_de'];
+	$fecha_a= $_REQUEST['fecha_a'];
+
+	if($fecha_de>$fecha_a){
+		header("Location: producto.php");
+	}else if($fecha_de == $fecha_a){
+		$where= "P.Fecha = '$fecha_de'";
+		$buscar = "fecha_de=$fecha_de&fecha_a=$fecha_a";
+	}else{
+		$where= "P.Fecha between '$fecha_de' and '$fecha_a'";
+		$buscar= "fecha_de=$fecha_de&fecha_a=$fecha_a";
+	}
+}
+/*hasta aqui el codigo de arriba funciona*/
+if(!empty($_REQUEST['fecha_de']) && !empty($_REQUEST['fecha_a'])
+&& !empty($_REQUEST['busqueda']) && empty($_REQUEST['categoria'])){
+
+	$fecha_de= $_REQUEST['fecha_de'];
+	$fecha_a= $_REQUEST['fecha_a'];
+	$busqueda= $_REQUEST['busqueda'];
+
+
+	if($fecha_de>$fecha_a){
+		header("Location: producto.php");
+	}else if($fecha_de == $fecha_a){
+		$where= "P.Nombre_Producto like '$busqueda%' and P.Fecha = '$fecha_de'";
+		$buscar = "fecha_de=$fecha_de&fecha_a=$fecha_a&busqueda=$busqueda";
+	}else{
+		$where= "P.Nombre_Producto like '$busqueda%' and P.Fecha between '$fecha_de' and '$fecha_a'";
+		$buscar= "fecha_de=$fecha_de&fecha_a=$fecha_a&busqueda=$busqueda";
+	}
+}
+/*hasta aqui igual funciona al parecer*/
+
+if(!empty($_REQUEST['fecha_de']) && !empty($_REQUEST['fecha_a'])
+&& !empty($_REQUEST['busqueda']) && !empty($_REQUEST['categoria'])){
+
+	$fecha_de= $_REQUEST['fecha_de'];
+	$fecha_a= $_REQUEST['fecha_a'];
+	$busqueda= $_REQUEST['busqueda'];
+	$categoria=$_REQUEST['categoria'];
+
+	if($fecha_de>$fecha_a){
+		header("Location: producto.php");
+	}else if($fecha_de == $fecha_a){
+		$where= "P.Nombre_Producto like '$busqueda%' and P.Codigo_categoria = $categoria and P.Fecha = '$fecha_de'";
+		$buscar = "fecha_de=$fecha_de&fecha_a=$fecha_a&busqueda=$busqueda&categoria=$categoria";
+	}else{
+		$where= "P.Nombre_Producto like '$busqueda%' and P.Codigo_categoria = $categoria and P.Fecha between '$fecha_de' and '$fecha_a'";
+		$buscar= "fecha_de=$fecha_de&fecha_a=$fecha_a&busqueda=$busqueda&categoria=$categoria";
+	}
+
+
+}
+if(!empty($_REQUEST['fecha_de']) && !empty($_REQUEST['fecha_a'])
+&& empty($_REQUEST['busqueda']) && !empty($_REQUEST['categoria'])){
+
+	$fecha_de= $_REQUEST['fecha_de'];
+	$fecha_a= $_REQUEST['fecha_a'];
+	$categoria=$_REQUEST['categoria'];
+
+	if($fecha_de>$fecha_a){
+		header("Location: producto.php");
+	}else if($fecha_de == $fecha_a){
+		$where= "P.Codigo_categoria = $categoria and P.Fecha = '$fecha_de'";
+		$buscar = "fecha_de=$fecha_de&fecha_a=$fecha_a&categoria=$categoria";
+	}else{
+		$where= "P.Codigo_categoria = $categoria and P.Fecha between '$fecha_de' and '$fecha_a'";
+		$buscar= "fecha_de=$fecha_de&fecha_a=$fecha_a&categoria=$categoria";
+	}
+
+}
+		
+			
+
 			
 		/*PAGINADOOOOOOR*/
 
@@ -111,6 +201,10 @@ $resul= pg_query($conexion,$consulta);
 ?>	
 
 		 </select>
+		  <label>Desde</label>
+	  	 <input type="date" name="fecha_de" value="<?php  echo $fecha_de; ?>" >
+		 <label>Hasta</label>
+		 <input type="date" name="fecha_a" value="<?php  echo $fecha_a; ?>" >             
 		<input type="submit" name="" value="Filtrar" class="btn_search">
 
 	</div>

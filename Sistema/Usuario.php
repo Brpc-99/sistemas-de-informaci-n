@@ -51,7 +51,7 @@ $resul= pg_query($conexion,$consulta);
 		<h2>Lista de Usuarios</h2>
 
 	<form action="buscar_usuario.php" method="get" class="form_search">
-		<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
+		<input type="text" name="busqueda" id="busqueda" placeholder="Nombre">
 		<?php 
 		$query= pg_query($conexion,"SELECT * FROM Rol");
 		$result_categoria= pg_num_rows($query);

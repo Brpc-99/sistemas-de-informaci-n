@@ -71,6 +71,10 @@ $resul= pg_query($conexion,$consulta);
 		 ?>	
 
 		 </select>
+		 <label>Desde</label>
+	 <input type="date" name="fecha_de" >
+		 <label>Hasta</label>
+		 <input type="date" name="fecha_a" > 
 		<input type="submit" name="" value="Filtrar" class="btn">
 	</form>
 	</div>

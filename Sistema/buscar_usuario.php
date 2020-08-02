@@ -11,18 +11,25 @@ $categoria='';
 				header("Location: Usuario.php");
 
 			}
-			if(!empty($_REQUEST['busqueda'])){
+			if(!empty($_REQUEST['busqueda']) && empty($_REQUEST['rol'])){
 
 				$busqueda= $_REQUEST['busqueda'];
 				$where= "U.Nombre like '$busqueda%'";
 				$buscar= 'busqueda='.$busqueda;
 				
 			}
-			if(!empty($_REQUEST['rol'])){
+		if(!empty($_REQUEST['rol']) && empty($_REQUEST['busqueda'])){
 
 				$categoria=$_REQUEST['rol'];
 				$where="U.Cod_rol= $categoria ";
 				$buscar='rol='.$categoria;
+			}
+			if(!empty($_REQUEST['busqueda']) && !empty($_REQUEST['rol'])){
+
+					$busqueda= $_REQUEST['busqueda'];
+					$categoria=$_REQUEST['rol'];
+					$where= "U.Nombre like '$busqueda%' and U.Cod_rol= $categoria";
+				$buscar= 'busqueda='.$busqueda.'&'.'rol='.$categoria;
 			}
 
 
@@ -74,7 +81,7 @@ $resul= pg_query($conexion,$consulta);
 		<h2>Lista de Usuarios</h2>
 
 	<form action="buscar_usuario.php" method="get" class="form_search">
-		<input type="text" name="busqueda" id="busqueda" placeholder="Buscar" value="<?php echo $busqueda; ?>">
+		<input type="text" name="busqueda" id="busqueda" placeholder="Nombre" value="<?php echo $busqueda; ?>">
 		<?php 
 		$pro=0;
 			if(!empty($_REQUEST['rol'])){
