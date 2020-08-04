@@ -1,7 +1,14 @@
+.contenedorr{
+	float: left;
+	width: 60%;
+	
+}
+
 table{
+
 	border-collapse: collapse;
 	margin: auto;
-	width: 60%;
+	width: 100%;
 
 }
 table td{
@@ -22,9 +29,10 @@ background: #ccc;
 
 .filtro{
 
-	width: 60%;
+	width: 100%;
 	margin:auto;
 	background: #4D7D7D;
+
 
 }
 h2{
@@ -47,6 +55,9 @@ h2{
 .form_search select{
 	padding: 5px;
 }
+label{
+	padding: 10px;
+}
 .btn{
 	color: black;
 	width:10%;
@@ -64,6 +75,7 @@ h2{
 .paginador{
 	margin: auto;
 	width: 60%;
+
 
 
 }
@@ -106,5 +118,53 @@ h2{
 	color: white;
 	text-decoration: none;
 	padding: 10px;
+
+}
+
+
+.monto_total{
+
+	width: 20%;
+	height: 350px;
+	float: left;
+	padding: 20px;
+	margin-top: 40px;
+}
+.formulario_monto{
+	width: 80%;
+	background: #4370E1;
+	padding: 10px;
+}
+.formulario_monto label{
+
+	display: inline-block;
+	padding: 10px;
+}
+.formulario_monto input{
+	padding: 10px;
+	width: 90%;
+} 
+.boton_buscar{
+	margin-top: 8px;
+	cursor: pointer;
+	border-radius: 20px;
+	background: #35B9B9;
+	border: 0;
+}
+.total{
+	width: 80%;
+	height: 100px;
+	padding: 10px;
+	background: #1E45A9;
+}
+.total label{
+	display: inline-block;
+	padding: 10px;
+	
+}
+.total input{
+
+	padding: 5px;
+	width: 90%;
 
 }

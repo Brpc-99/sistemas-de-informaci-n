@@ -2,7 +2,24 @@
 
 include"..\include/conexion.php";
 
+/*mONTO total por mes recuadro pequeño*/
+$transformado="";
+if(isset($_POST['enviar'])){
 
+$de=$_POST['desde'];
+$ha=$_POST['hasta'];
+if(!empty($_POST['desde']) && !empty($_POST['hasta'])){
+$consulta_montos="SELECT SUM(P.Stock*P.Valor_unitario) as total
+FROM PRODUCTOS P
+WHERE P.Fecha BETWEEN '$de' and '$ha'";
+$resultado_monto=pg_query($conexion,$consulta_montos);
+$result_monto=pg_fetch_array($resultado_monto);
+$total_monto= $result_monto['total'];
+$transformado= number_format($total_monto);
+}else{
+	header("Location: producto.php");
+}
+}
 
 /*PAGINADOOOOOOR*/
 $sql_registro= pg_query($conexion,"SELECT COUNT(*) AS total_registro FROM PRODUCTOS"); /*Total de todos los registros*/
@@ -45,6 +62,26 @@ $resul= pg_query($conexion,$consulta);
  	<div class="registrar_producto">
 	<a href="#">Registrar Producto</a>
 	</div>
+	<div class="monto_total">
+			<form class="formulario_monto" method="post"
+	 action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>">
+					<label>Desde</label>
+					<br>
+					<input type="date" name="desde" value="<?php echo $de ?>">
+					<br>
+					<label>Hasta</label>
+					<br>
+					<input type="date" name="hasta" value="<?php echo $ha ?>">
+					<br>
+					<input type="submit" class="boton_buscar" name="enviar" value="Buscar">
+			</form>
+		<div class="total">
+			<label>Monto Total</label>
+			<input type="text" name="" value="<?php echo $transformado ?>" disabled>
+		</div>
+	</div>
+
+	<div class="contenedorr">
 	<div class="filtro">
 		<h2>Lista de Productos</h2>
 	<form action="buscar_producto.php" method="get" class="form_search">
@@ -103,10 +140,10 @@ $resul= pg_query($conexion,$consulta);
 			<td><?php echo $mostrar['descripcion'] ?></td>
 			<td><?php echo $mostrar['nombre_categoria'] ?></td>
 			<td><?php echo $mostrar['fecha']?></td>
-			<td><?php echo $mostrar['valor_unitario'] ?></td>
-			<td><?php echo $mostrar['stock'] ?></td>
+			<td><?php echo number_format($mostrar['valor_unitario']) ?></td>
+			<td><?php echo number_format($mostrar['stock']) ?></td>
 			<?php $total=$mostrar['valor_unitario']*$mostrar['stock']; ?>
-			<td><?php echo $total ?></td>
+			<td><?php echo number_format($total) ?></td>
 			<td><a href="modificando_producto.php?id=<?php echo $mostrar['codigo_producto'] ?>">Modificar</a></td>
 			<td><a href="eliminando_producto.php?id=<?php echo $mostrar['codigo_producto'] ?>">Eliminar</a></td>
 
@@ -117,6 +154,8 @@ $resul= pg_query($conexion,$consulta);
 		 ?>
 
 	</table>
+
+</div>
 
 		<div class="paginador">
 			<ul>
@@ -141,6 +180,7 @@ $resul= pg_query($conexion,$consulta);
 
 
 	</div>
+
  	<footer>
 	
 		<div class="iconos">
