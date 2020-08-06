@@ -50,7 +50,7 @@ $resul= pg_query($conexion,$consulta);
 		<h2>Lista de Categorías</h2>
 
 	<form action="buscar_categoria.php" method="get" class="form_search">
-		<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
+		<input type="text" name="busqueda" id="busqueda" placeholder="Nombre">
 	
 		<input type="submit" name="" value="Filtrar" class="btn">
 	</form>

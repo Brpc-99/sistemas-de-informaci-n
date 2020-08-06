@@ -60,7 +60,7 @@ $resul= pg_query($conexion,$consulta);
  <body>
  	<?php include"..\include\header.html" ?>
  	<div class="registrar_producto">
-	<a href="#">Registrar Producto</a>
+	<a href="registrar_producto.php">Registrar Producto</a>
 	</div>
 	<div class="monto_total">
 			<form class="formulario_monto" method="post"
