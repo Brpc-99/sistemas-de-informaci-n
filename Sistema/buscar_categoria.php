@@ -89,8 +89,8 @@ $resul= pg_query($conexion,$consulta);
 			<td><?php echo $mostrar['codigo_categoria'] ?></td>
 			<td><?php echo $mostrar['nombre_categoria'] ?></td>
 			<td><?php echo $mostrar['descripcion']?></td>
-			<td><a href="#">Modificar</a></td>
-			<td><a href="#">Eliminar</a></td>
+			<td><a href="modificando_categoria.php?id=<?php echo $mostrar['codigo_categoria'] ?>">Modificar</a></td>
+			<td><a href="eliminando_categoria.php?id=<?php echo $mostrar['codigo_categoria'] ?>">Eliminar</a></td>
 
 		</tr>
 

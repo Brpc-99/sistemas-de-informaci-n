@@ -155,7 +155,7 @@ $desde=($pagina-1)*$por_pagina;
 $total_paginas= ceil($total_registro/$por_pagina); 
 
 /*CONSULTAS*/
-$consulta= "SELECT P.Nombre_Producto,P.Descripcion,C.Nombre_categoria,P.Fecha,P.Valor_unitario,
+$consulta= "SELECT P.Codigo_producto,P.Nombre_Producto,P.Descripcion,C.Nombre_categoria,P.Fecha,P.Valor_unitario,
 P.Valor_de_venta,P.Stock
 FROM PRODUCTOS P,CATEGORIAS C
 WHERE $where and P.Codigo_categoria=C.Codigo_categoria
@@ -178,7 +178,7 @@ $resul= pg_query($conexion,$consulta);
  	<?php include"..\include\header.html" ?>
 
  	<div class="registrar_producto">
-	<a href="#">Registrar Producto</a>
+	<a href="registrar_producto.php">Registrar Producto</a>
 	</div>
 	<div class="monto_total">
 			<form class="formulario_monto" method="post">
