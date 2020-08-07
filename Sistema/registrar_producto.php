@@ -14,37 +14,70 @@ include"..\include/conexion.php";
 </head>
 <body>
 <?php include"..\include\header.html" ?>
-	<div class="contenedor">
+	<div class="contenedorr">
 		
 	
 			
-			<form class="formulario" action="insertando_usuario.php" method="post">
+			<form class="formulario" action="insertando_producto.php" method="post">
 				<h2>Registrar Producto</h2>
 				<p class="campo">Campos Obligatorios *</p>
 				<div class="contenedor_input">
 				<input type="text" name="nombre" placeholder="Nombre *" maxlength="20" id="nombre" class="input-pequeño">
-				<select name="codigo_categoria" class="codigo_categoria">
-					<option value="1">Administrador </option>
-					<option value="2">Vendedor </option>
-				</select>
-				<br>
-				<select name="codigo_proveedor" class="codigo_categoria">
-					<option value="" selected>Proveedor</option>
+						<?php 
+		$cons= pg_query($conexion,"SELECT * FROM CATEGORIAS");
+		$result_catego= pg_num_rows($cons);
+
+		 ?>
+		 <select name="codigo_categoria" id="categoria" class="codigo_categoria">
+		 	<option value="" selected>Categoría</option>
+		 	<?php 
+		 	if($result_catego>0){
+
+		 		while ($catego=pg_fetch_array($cons)) {
+
+		 	 ?>	
+
+		<option value="<?php echo $catego['codigo_categoria']; ?>"><?php echo $catego['nombre_categoria']?> </option>
 <?php  
-			$query= pg_query($conexion,"SELECT * FROM PROVEEDORES");
-				$result_categoria= pg_num_rows($query);
-?>				
-				</select>
-					<input type="tex" name="cantidad" placeholder="Cantidad *" maxlength="15" id="usuario" class="input-pequeño">
+		 		}
+		 	}
+
+		 ?>	
+
+		 </select>
+				<br>
+			<?php 
+		$query= pg_query($conexion,"SELECT * FROM PROVEEDORES");
+		$result_categoria= pg_num_rows($query);
+
+		 ?>
+		 <select name="codigo_proveedores" id="proveedores" class="codigo_categoria">
+		 	<option value="" selected>Proveedores</option>
+		 	<?php 
+		 	if($result_categoria>0){
+
+		 		while ($categoria=pg_fetch_array($query)) {
+
+		 	 ?>	
+
+		<option value="<?php echo $categoria['codigo_proveedores']; ?>"><?php echo $categoria['nombre']?> </option>
+<?php  
+		 		}
+		 	}
+
+		 ?>	
+
+		 </select>
+					<input type="tex" name="cantidad" placeholder="Cantidad *" maxlength="10" id="cantidad" class="input-pequeño">
 				<br>
 			
 				<input type="text" name="v_compra" placeholder="Valor Unitario de Compra *" maxlength="15" id="v_compra" class="input-pequeño">
 				
-				<input type="text" name="v_venta" placeholder="Valor Unitario de Venta *" maxlength="40" id="v_venta" class="input-pequeño">
+				<input type="text" name="v_venta" placeholder="Valor Unitario de Venta *" maxlength="10" id="v_venta" class="input-pequeño">
 				<br>
 				<input type="date" name="fecha" id="fecha" class="fecha">
 				<br>
-				<textarea  name="descripcion" placeholder="Descripción *" maxlength="10" id="descripcion" class="input_grande"></textarea> 
+				<textarea  name="descripcion" placeholder="Descripción *" maxlength="50" id="descripcion" class="input_grande"></textarea> 
 				<br>
 				
 				<br>
@@ -61,11 +94,8 @@ include"..\include/conexion.php";
 			</form>
 
 
-
-
-
-
-
 	</div>
+
+	<script src="js\registrar_producto.js"></script>
 </body>
 </html>

@@ -85,7 +85,7 @@ $resul= pg_query($conexion,$consulta);
 	<div class="filtro">
 		<h2>Lista de Productos</h2>
 	<form action="buscar_producto.php" method="get" class="form_search">
-		<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
+		<input type="text" name="busqueda" id="busqueda" placeholder="Nombre">
 		<?php 
 		$query= pg_query($conexion,"SELECT * FROM CATEGORIAS");
 		$result_categoria= pg_num_rows($query);
