@@ -3,6 +3,7 @@
 
 		if(!empty($_POST)){
 			$idusuario=$_POST['idusuario'];
+			$entregan_delete= pg_query($conexion,"DELETE FROM ENTREGAN WHERE Codigo_producto=$idusuario ");
 			$query_delete=pg_query($conexion, "DELETE FROM PRODUCTOS where  Codigo_producto=$idusuario");
 
 			if($query_delete){

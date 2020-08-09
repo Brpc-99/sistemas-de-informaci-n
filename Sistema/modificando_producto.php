@@ -24,6 +24,7 @@ if(isset($_POST['btn'])){
 	SET 
 Codigo_categoria='$codigo_categoria',Nombre_Producto='$nombre',Descripcion='$descripcion',Fecha='$fecha',Valor_unitario='$v_compra',Valor_de_venta='$v_venta',Stock='$cantidad'
 	 WHERE Codigo_producto=$iduser");
+	$consulta2= pg_query($conexion, "UPDATE ENTREGAN SET Codigo_proveedores=$codigo_proveedores WHERE Codigo_producto=$iduser");
 
 if(!$consulta){
 echo '<script>

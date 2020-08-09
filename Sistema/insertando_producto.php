@@ -25,12 +25,23 @@ if(!$resultado){
 	window.history.go(-1);
 	</script>';
 }else{
+
+
+	$contador= "SELECT MAX(Codigo_producto) as max FROM PRODUCTOS";
+	$contador2=pg_query($conexion,$contador);
+	 while($data = pg_fetch_array($contador2)){
+
+		$clave= $data['max'];
+
+	}
+	$entregan= "INSERT INTO ENTREGAN (Codigo_proveedores,Codigo_producto) VALUES($codigo_proveedores,$clave)";
+	$resultado2 = pg_query($conexion,$entregan);
+	
 	echo '<script>
 	alert("Registro insertado exitosamente");
 	window.history.go(-2);
 	</script>';
 
 }
-
 
  ?>
