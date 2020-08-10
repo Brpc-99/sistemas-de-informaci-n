@@ -212,7 +212,7 @@ $resul= pg_query($conexion,$consulta);
 		<h2>Lista de Productos</h2>
 
 	<form action="buscar_producto.php" method="get" class="form_search">
-		<input type="text" name="busqueda" id="busqueda" placeholder="Nombre" value="<?php echo $busqueda; ?>">
+		<input type="text" name="busqueda" id="busqueda" placeholder="Nombre o Proveedor" value="<?php echo $busqueda; ?>">
 			<?php 
 			$pro=0;
 			if(!empty($_REQUEST['categoria'])){

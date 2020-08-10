@@ -6,7 +6,7 @@ if(!empty($_POST)){
 
 $iduser=$_POST['idusuario'];
 $nombre= $_POST['nombre'];
-$codigo_categoria=$_POST['codigo_categoria'];
+$codigo_categoria=$_POST['codigo_categorias'];
 $codigo_proveedores=$_POST['codigo_proveedores'];
 $cantidad= $_POST['cantidad'];
 $descripcion= $_POST['descripcion'];
@@ -22,7 +22,7 @@ if(isset($_POST['btn'])){
 	
 	$consulta= pg_query($conexion, "UPDATE PRODUCTOS
 	SET 
-Codigo_categoria='$codigo_categoria',Nombre_Producto='$nombre',Descripcion='$descripcion',Fecha='$fecha',Valor_unitario='$v_compra',Valor_de_venta='$v_venta',Stock='$cantidad'
+Codigo_categoria=$codigo_categoria,Nombre_Producto='$nombre',Descripcion='$descripcion',Fecha='$fecha',Valor_unitario='$v_compra',Valor_de_venta='$v_venta',Stock='$cantidad'
 	 WHERE Codigo_producto=$iduser");
 	$consulta2= pg_query($conexion, "UPDATE ENTREGAN SET Codigo_proveedores=$codigo_proveedores WHERE Codigo_producto=$iduser");
 
@@ -100,8 +100,7 @@ $resul=pg_num_rows($sql);
 		$result_catego= pg_num_rows($cons);
 
 		 ?>
-		 <select name="codigo_categoria" id="categoria" class="codigo_categoria">
-		 	<option value="" selected>Categoría</option>
+		 <select name="codigo_categorias" id="categoria" class="codigo_categoria">
 		 	<?php 
 		 	if($result_catego>0){
 
@@ -124,7 +123,7 @@ $resul=pg_num_rows($sql);
 
 		 ?>
 		 <select name="codigo_proveedores" id="proveedores" class="codigo_categoria">
-		 	<option value="" selected>Proveedores</option>
+		
 		 	<?php 
 		 	if($result_categoria>0){
 
