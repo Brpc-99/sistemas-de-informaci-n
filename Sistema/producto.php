@@ -38,10 +38,10 @@ $desde=($pagina-1)*$por_pagina;
 $total_paginas= ceil($total_registro/$por_pagina); 
 
 /*CONSULTAS*/
-$consulta= "SELECT P.Codigo_producto,P.Nombre_Producto,P.Descripcion,C.Nombre_categoria,P.Fecha,P.Valor_unitario,
+$consulta= "SELECT P.Codigo_producto,P.Nombre_Producto,P.Descripcion,C.Nombre_categoria,PR.Nombre,P.Fecha,P.Valor_unitario,
 P.Valor_de_venta,P.Stock
-FROM PRODUCTOS P,CATEGORIAS C
-WHERE P.Codigo_categoria=C.Codigo_categoria
+FROM PRODUCTOS P,CATEGORIAS C,PROVEEDORES PR,ENTREGAN E
+WHERE P.Codigo_categoria=C.Codigo_categoria and P.Codigo_producto=E.Codigo_producto and E.Codigo_proveedores=PR.Codigo_proveedores
 limit $por_pagina offset $desde; ";
 $resul= pg_query($conexion,$consulta);
 
@@ -85,7 +85,7 @@ $resul= pg_query($conexion,$consulta);
 	<div class="filtro">
 		<h2>Lista de Productos</h2>
 	<form action="buscar_producto.php" method="get" class="form_search">
-		<input type="text" name="busqueda" id="busqueda" placeholder="Nombre">
+		<input type="text" name="busqueda" id="busqueda" placeholder="Nombre o Descripción">
 		<?php 
 		$query= pg_query($conexion,"SELECT * FROM CATEGORIAS");
 		$result_categoria= pg_num_rows($query);
@@ -108,6 +108,8 @@ $resul= pg_query($conexion,$consulta);
 		 ?>	
 
 		 </select>
+
+		
 		 <label>Desde</label>
 	 <input type="date" name="fecha_de" >
 		 <label>Hasta</label>
@@ -121,6 +123,7 @@ $resul= pg_query($conexion,$consulta);
 			<td>Nombre</td>
 			<td>Descripción</td>
 			<td>Categoría</td>
+			<td>Proveedor</td>
 			<td>Fecha Ingreso</td>
 			<td>Valor Unitario de Compra</td>
 			<td>Stock</td>
@@ -139,6 +142,7 @@ $resul= pg_query($conexion,$consulta);
 			<td><?php echo $mostrar['nombre_producto'] ?></td>
 			<td><?php echo $mostrar['descripcion'] ?></td>
 			<td><?php echo $mostrar['nombre_categoria'] ?></td>
+			<td><?php echo $mostrar['nombre'] ?></td>
 			<td><?php echo $mostrar['fecha']?></td>
 			<td><?php echo number_format($mostrar['valor_unitario']) ?></td>
 			<td><?php echo number_format($mostrar['stock']) ?></td>

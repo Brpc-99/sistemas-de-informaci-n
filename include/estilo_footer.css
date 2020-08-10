@@ -1,8 +1,7 @@
-
 footer{
 	width: 100%;
 	background: #11757D;
-	height: 80px;
+	height: 65px;
 	position: fixed; /* ciudao*/
 	bottom: 0; /**/
 	left: 0;/**/
@@ -15,20 +14,20 @@ footer{
 footer .iconos{
 	float: left;
 	width: 80%;
-	height: 80px;
+	height: 65px;
 	padding: 0px 10px;
 	display: block;
 
 }
 footer span{
-	font-size: 50px;
+	font-size: 30px;
 	padding: 10px;
 
 }
 footer .contacto{
 	float: left;
 	width: 20%;
-	height: 80px;
+	height: 65px;
 }
 .siguenos{
 	width: 100%;

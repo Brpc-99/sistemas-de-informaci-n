@@ -75,12 +75,13 @@ $resul= pg_query($conexion,$consulta);
 	</div>
 	<table>
 		<tr class="encabezado">
-			<td>Codigo</td>
+			<td>Código</td>
 			<td>Rut</td>
 			<td>Nombre</td>
 			<td>Descripción</td>
 			<td>Modificar</td>
 			<td>Eliminar</td>
+			
 
 		</tr>
 		<?php 
@@ -94,6 +95,7 @@ $resul= pg_query($conexion,$consulta);
 			<td><?php echo $mostrar['descripcion']?></td>
 			<td><a href="modificacion_proveedores.php?id=<?php echo $mostrar['codigo_proveedores'] ?>">Modificar</a></td>
 			<td><a href="Eliminar_proveedores.php?id=<?php echo $mostrar['codigo_proveedores'] ?>">Eliminar</a></td>
+
 		</tr>
 
 		<?php 

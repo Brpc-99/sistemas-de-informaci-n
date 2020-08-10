@@ -35,14 +35,14 @@ $fecha_a='';
 /*funciona*/if(!empty($_REQUEST['busqueda']) && empty($_REQUEST['categoria']) && empty($_REQUEST['fecha_de']) && empty($_REQUEST['fecha_a'])){
 
 				$busqueda= $_REQUEST['busqueda'];
-				$where= "P.Nombre_Producto like '$busqueda%'";
+				$where= "(P.Nombre_Producto like '$busqueda%' or PR.Nombre like '$busqueda%')";
 				$buscar= 'busqueda='.$busqueda;
 				
 /*funciona*/			}
 			if(!empty($_REQUEST['busqueda']) && !empty($_REQUEST['categoria']) && empty($_REQUEST['fecha_de']) && empty($_REQUEST['fecha_a'])){
 				$busqueda= $_REQUEST['busqueda'];
 				$categoria= $_REQUEST['categoria'];
-				$where= "P.Nombre_Producto like '$busqueda%' and P.Codigo_categoria = $categoria";
+				$where= "(P.Nombre_Producto like '$busqueda%'or PR.Nombre like '$busqueda%') and P.Codigo_categoria = $categoria";
 				$buscar= 'busqueda='.$busqueda.'&'.'categoria='.$categoria;
 
 			}
@@ -83,10 +83,10 @@ if(!empty($_REQUEST['fecha_de']) && !empty($_REQUEST['fecha_a'])
 	if($fecha_de>$fecha_a){
 		header("Location: producto.php");
 	}else if($fecha_de == $fecha_a){
-		$where= "P.Nombre_Producto like '$busqueda%' and P.Fecha = '$fecha_de'";
+		$where= "(P.Nombre_Producto like '$busqueda%'or PR.Nombre like '$busqueda%') and P.Fecha = '$fecha_de'";
 		$buscar = "fecha_de=$fecha_de&fecha_a=$fecha_a&busqueda=$busqueda";
 	}else{
-		$where= "P.Nombre_Producto like '$busqueda%' and P.Fecha between '$fecha_de' and '$fecha_a'";
+		$where= "(P.Nombre_Producto like '$busqueda%'or PR.Nombre like '$busqueda%') and P.Fecha between '$fecha_de' and '$fecha_a'";
 		$buscar= "fecha_de=$fecha_de&fecha_a=$fecha_a&busqueda=$busqueda";
 	}
 }
@@ -103,10 +103,10 @@ if(!empty($_REQUEST['fecha_de']) && !empty($_REQUEST['fecha_a'])
 	if($fecha_de>$fecha_a){
 		header("Location: producto.php");
 	}else if($fecha_de == $fecha_a){
-		$where= "P.Nombre_Producto like '$busqueda%' and P.Codigo_categoria = $categoria and P.Fecha = '$fecha_de'";
+		$where= "(P.Nombre_Producto like '$busqueda%'or PR.Nombre like '$busqueda%') and P.Codigo_categoria = $categoria and P.Fecha = '$fecha_de'";
 		$buscar = "fecha_de=$fecha_de&fecha_a=$fecha_a&busqueda=$busqueda&categoria=$categoria";
 	}else{
-		$where= "P.Nombre_Producto like '$busqueda%' and P.Codigo_categoria = $categoria and P.Fecha between '$fecha_de' and '$fecha_a'";
+		$where= "(P.Nombre_Producto like '$busqueda%'or PR.Nombre like '$busqueda%') and P.Codigo_categoria = $categoria and P.Fecha between '$fecha_de' and '$fecha_a'";
 		$buscar= "fecha_de=$fecha_de&fecha_a=$fecha_a&busqueda=$busqueda&categoria=$categoria";
 	}
 
@@ -130,6 +130,16 @@ if(!empty($_REQUEST['fecha_de']) && !empty($_REQUEST['fecha_a'])
 	}
 
 }
+if(!empty($_REQUEST['fecha_de']) && empty($_REQUEST['fecha_a'])){
+
+header("Location: producto.php");
+
+}
+if(empty($_REQUEST['fecha_de']) && !empty($_REQUEST['fecha_a'])){
+
+header("Location: producto.php");
+
+}
 		
 			
 
@@ -137,7 +147,7 @@ if(!empty($_REQUEST['fecha_de']) && !empty($_REQUEST['fecha_a'])
 		/*PAGINADOOOOOOR*/
 
 
-$sql_registro= pg_query($conexion,"SELECT COUNT(*) AS total_registro FROM PRODUCTOS P WHERE
+$sql_registro= pg_query($conexion,"SELECT COUNT(*) AS total_registro FROM PRODUCTOS P,PROVEEDORES PR, ENTREGAN E WHERE P.codigo_producto=E.codigo_producto and E.Codigo_proveedores=PR.Codigo_proveedores and
  $where "); /*Total de todos los registros*/
 	$result_registro = pg_fetch_array($sql_registro);
 	$total_registro= $result_registro['total_registro'];
@@ -155,10 +165,10 @@ $desde=($pagina-1)*$por_pagina;
 $total_paginas= ceil($total_registro/$por_pagina); 
 
 /*CONSULTAS*/
-$consulta= "SELECT P.Codigo_producto,P.Nombre_Producto,P.Descripcion,C.Nombre_categoria,P.Fecha,P.Valor_unitario,
+$consulta= "SELECT P.Codigo_producto,P.Nombre_Producto,P.Descripcion,C.Nombre_categoria,PR.Nombre,P.Fecha,P.Valor_unitario,
 P.Valor_de_venta,P.Stock
-FROM PRODUCTOS P,CATEGORIAS C
-WHERE $where and P.Codigo_categoria=C.Codigo_categoria
+FROM PRODUCTOS P,CATEGORIAS C,PROVEEDORES PR,ENTREGAN E
+WHERE $where and P.Codigo_categoria=C.Codigo_categoria and P.Codigo_producto=E.Codigo_producto and E.Codigo_proveedores=PR.Codigo_proveedores
 limit $por_pagina offset $desde; ";
 $resul= pg_query($conexion,$consulta);
 
@@ -250,6 +260,7 @@ $resul= pg_query($conexion,$consulta);
 			<td>Nombre</td>
 			<td>Descripción</td>
 			<td>Categoría</td>
+			<td>Proveedor</td>
 			<td>Fecha Ingreso</td>
 			<td>Valor Unitario de Compra</td>
 			<td>Stock</td>
@@ -273,6 +284,7 @@ $resul= pg_query($conexion,$consulta);
 			<td><?php echo $mostrar['nombre_producto'] ?></td>
 			<td><?php echo $mostrar['descripcion'] ?></td>
 			<td><?php echo $mostrar['nombre_categoria'] ?></td>
+			<td><?php echo $mostrar['nombre']?></td>
 			<td><?php echo $mostrar['fecha']?></td>
 			<td><?php echo number_format($mostrar['valor_unitario']) ?></td>
 			<td><?php echo number_format($mostrar['stock']) ?></td>
