@@ -261,7 +261,7 @@ $resul= pg_query($conexion,$consulta);
 			<td>Descripción</td>
 			<td>Categoría</td>
 			<td>Proveedor</td>
-			<td>Fecha Ingreso</td>
+			<td>Fecha Modificación</td>
 			<td>Valor valor c/u</td>
 			<td>Stock</td>
 			<td>Valor Total</td>

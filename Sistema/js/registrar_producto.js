@@ -12,8 +12,9 @@ var mensaje= document.getElementById("error");
 
 var validar= function(e){
 
-	if(nombre.value=="" || categoria.value== "" || cantidad.value==""||
-		v_compra.value==""||v_venta.value==""||descripcion.value==""){
+if(nombre.value=="" || categoria.value== "" || cantidad.value==""||
+v_compra.value==""||v_venta.value==""|| proveedores.value=="")
+{
 
 	mensaje.innerHTML= "Complete Todos los campos Obligatorios";
 	e.preventDefault(); 

@@ -2,24 +2,40 @@
 
 include"..\include/conexion.php";
 
+$busqueda='';
+
+ 	if(empty($_REQUEST['busqueda']))
+			{
+				header("Location: Proveedores.php");
+
+			}
+			if(!empty($_REQUEST['busqueda'])){
+
+				$busqueda= $_REQUEST['busqueda'];
+				$where= "P.Nombre like '$busqueda%'";
+				$buscar= 'busqueda='.$busqueda;
+				
+			}
 /*PAGINADOOOOOOR*/
-$sql_registro= pg_query($conexion,"SELECT COUNT(*) AS total_registro FROM PROVEEDORES"); /*Total de todos los registros*/
-	$result_registro = pg_fetch_array($sql_registro);//hace que solo muestre 5 en pantalla 
+$sql_registro= pg_query($conexion,"SELECT COUNT(*) AS total_registro FROM PROVEEDORES P"); /*Total de todos los registros*/
+	$result_registro = pg_fetch_array($sql_registro);
 	$total_registro= $result_registro['total_registro'];
 	$por_pagina=5;
 
-if(empty($_GET['pagina'])){ //si esta vacio entra de lo contrario recibo pagina
+if(empty($_GET['pagina'])){
 	$pagina=1;
 }else{
 	$pagina=$_GET['pagina'];
 }
 
 $desde=($pagina-1)*$por_pagina;
-$total_paginas= ceil($total_registro/$por_pagina); //divide la cnatidad de pagina 
+$total_paginas= ceil($total_registro/$por_pagina); 
 
 /*CONSULTAS*/
-$consulta= "SELECT P.Codigo_proveedores,P.Rut,P.Nombre,P.Descripcion FROM PROVEEDORES P 
-	limit $por_pagina offset $desde; ";
+$consulta= "SELECT P.Codigo_proveedores,P.Rut,P.Nombre,P.Descripcion
+FROM PROVEEDORES P
+Where $where
+limit $por_pagina offset $desde; ";
 $resul= pg_query($conexion,$consulta);
 
  ?>
@@ -120,4 +136,5 @@ $resul= pg_query($conexion,$consulta);
 	</footer>
 	
 </body>
+</html>
 </html>

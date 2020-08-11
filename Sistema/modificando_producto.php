@@ -62,7 +62,7 @@ $resul=pg_num_rows($sql);
 		$Codigo_categoria= $data['codigo_categoria'];
 		$nombre= $data['nombre_producto'];
 		$descripcion= $data['descripcion'];
-		$fecha=$data['fecha'];
+		$Fecha=$data['fecha'];
 		$Valor_unitario=$data['valor_unitario'];
 		$Valor_de_venta=$data['valor_de_venta'];
 		$Stock=$data['stock'];
@@ -147,7 +147,7 @@ $resul=pg_num_rows($sql);
 				
 				<input type="text" name="v_venta" placeholder="Valor Unitario de Venta *" maxlength="10" id="v_venta" class="input-pequeño" value=" <?php echo $Valor_de_venta ?> ">
 				<br>
-				<input type="date" name="fecha" id="fecha" class="fecha" value="<?php echo $fecha ?> ">
+				<input type="date" name="fecha" id="fecha" class="fecha" value="<?php echo $Fecha ?>" required>
 				<br>
 				<input  name="descripcion" placeholder="Descripción *" maxlength="50" id="descripcion" class="input_grande"
 				value="<?php echo $descripcion ?>">

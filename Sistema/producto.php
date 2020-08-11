@@ -22,7 +22,8 @@ $transformado= number_format($total_monto);
 }
 
 /*PAGINADOOOOOOR*/
-$sql_registro= pg_query($conexion,"SELECT COUNT(*) AS total_registro FROM PRODUCTOS"); /*Total de todos los registros*/
+$sql_registro= pg_query($conexion,"SELECT COUNT(*) AS total_registro FROM PRODUCTOS P,CATEGORIAS C,PROVEEDORES PR,ENTREGAN E
+WHERE P.Codigo_categoria=C.Codigo_categoria and P.Codigo_producto=E.Codigo_producto and E.Codigo_proveedores=PR.Codigo_proveedores"); /*Total de todos los registros*/
 	$result_registro = pg_fetch_array($sql_registro);
 	$total_registro= $result_registro['total_registro'];
 	$por_pagina=5;
@@ -124,7 +125,7 @@ $resul= pg_query($conexion,$consulta);
 			<td>Descripción</td>
 			<td>Categoría</td>
 			<td>Proveedor</td>
-			<td>Fecha Ingreso</td>
+			<td>Fecha Modificación</td>
 			<td>Valor c/u</td>
 			<td>Stock</td>
 			<td>Valor Total</td>

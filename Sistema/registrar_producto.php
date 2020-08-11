@@ -75,9 +75,9 @@ include"..\include/conexion.php";
 				
 				<input type="text" name="v_venta" placeholder="Valor Unitario de Venta *" maxlength="10" id="v_venta" class="input-pequeño">
 				<br>
-				<input type="date" name="fecha" id="fecha" class="fecha">
+				<input type="date" name="fecha" id="fecha" class="fecha" required>
 				<br>
-				<textarea  name="descripcion" placeholder="Descripción *" maxlength="50" id="descripcion" class="input_grande"></textarea> 
+				<textarea  name="descripcion" placeholder="Descripción" maxlength="50" id="descripcion" class="input_grande"></textarea> 
 				<br>
 				
 				<br>
