@@ -10,9 +10,10 @@ $v_venta= $_POST['v_venta'];
 $fecha= $_POST['fecha'];
 $descripcion = $_POST['descripcion'];
 $cantidad =$_POST['cantidad'];
+$total= $cantidad*$v_compra;
 
-$insertar= "INSERT INTO PRODUCTOS (Codigo_categoria,Nombre_Producto,Descripcion,Fecha,Valor_unitario,Valor_de_venta,Stock)
-VALUES('$codigo_categoria','$nombre','$descripcion','$fecha','$v_compra','$v_venta','$cantidad')";
+$insertar= "INSERT INTO PRODUCTOS (Codigo_categoria,Nombre_Producto,Descripcion,Fecha,Valor_unitario,Valor_de_venta,Stock,total)
+VALUES('$codigo_categoria','$nombre','$descripcion','$fecha','$v_compra','$v_venta','$cantidad','$total')";
 
 
 

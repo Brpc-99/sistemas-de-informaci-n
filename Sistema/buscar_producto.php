@@ -13,7 +13,7 @@ if(isset($_POST['enviar'])){
 $de=$_POST['desdes'];
 $ha=$_POST['hasta'];
 if(!empty($_POST['desdes']) && !empty($_POST['hasta'])){
-$consulta_montos="SELECT SUM(P.Stock*P.Valor_unitario) as total
+$consulta_montos="SELECT SUM(P.total) as total
 FROM PRODUCTOS P
 WHERE P.Fecha BETWEEN '$de' and '$ha'";
 $resultado_monto=pg_query($conexion,$consulta_montos);
@@ -203,7 +203,7 @@ $resul= pg_query($conexion,$consulta);
 					<input type="submit" class="boton_buscar" name="enviar" value="Buscar">
 			</form>
 		<div class="total">
-			<label>Monto Total</label>
+			<label>Monto Total Gastado</label>
 			<input type="text" name="" value="<?php echo $transformado ?>" disabled>
 		</div>
 	</div>
@@ -262,11 +262,12 @@ $resul= pg_query($conexion,$consulta);
 			<td>Categoría</td>
 			<td>Proveedor</td>
 			<td>Fecha Ingreso</td>
-			<td>Valor Unitario de Compra</td>
+			<td>Valor valor c/u</td>
 			<td>Stock</td>
 			<td>Valor Total</td>
 			<td>Modificar</td>
 			<td>Eliminar</td>
+			<td>Cargar Stock</td>
 
 		</tr>
 
@@ -292,6 +293,7 @@ $resul= pg_query($conexion,$consulta);
 			<td><?php echo number_format($total) ?></td>
 			<td><a href="modificando_producto.php?id=<?php echo $mostrar['codigo_producto'] ?>">Modificar</a></td>
 			<td><a href="eliminando_producto.php?id=<?php echo $mostrar['codigo_producto'] ?>">Eliminar</a></td>
+			<td><a href="cargar_stock.php?id=<?php echo $mostrar['codigo_producto'] ?>">Aquí</a></td>
 
 		</tr>
 

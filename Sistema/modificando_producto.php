@@ -14,6 +14,7 @@ $v_compra=$_POST['v_compra'];
 $v_venta=$_POST['v_venta'];
 $descripcion=$_POST['descripcion'];
 $fecha=$_POST['fecha'];
+$total= $v_compra*$cantidad;
 
 
 
@@ -22,7 +23,7 @@ if(isset($_POST['btn'])){
 	
 	$consulta= pg_query($conexion, "UPDATE PRODUCTOS
 	SET 
-Codigo_categoria=$codigo_categoria,Nombre_Producto='$nombre',Descripcion='$descripcion',Fecha='$fecha',Valor_unitario='$v_compra',Valor_de_venta='$v_venta',Stock='$cantidad'
+Codigo_categoria=$codigo_categoria,Nombre_Producto='$nombre',Descripcion='$descripcion',Fecha='$fecha',Valor_unitario='$v_compra',Valor_de_venta='$v_venta',Stock='$cantidad',total=$total
 	 WHERE Codigo_producto=$iduser");
 	$consulta2= pg_query($conexion, "UPDATE ENTREGAN SET Codigo_proveedores=$codigo_proveedores WHERE Codigo_producto=$iduser");
 
