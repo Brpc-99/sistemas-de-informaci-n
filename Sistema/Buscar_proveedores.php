@@ -1,6 +1,7 @@
 <?php 
 
 include"..\include/conexion.php";
+session_start();
 
 $busqueda='';
 
@@ -52,7 +53,7 @@ $resul= pg_query($conexion,$consulta);
 	<link rel="stylesheet" type="text/css" href="..\include\estilo_footer.css">
 </head>
 <body>
-	<?php include"..\include\header.html" ?>
+	<?php include"..\include\header.php"; ?>
 
 
 	<div class="registrar_usuario">

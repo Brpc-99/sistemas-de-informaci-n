@@ -1,6 +1,13 @@
 <?php 
 
 include"..\include/conexion.php";
+session_start();
+if($_SESSION['rol']!=1)
+{
+	echo $_SESSION['rol'];
+	header("Location: Producto.php");
+}
+
 
 if(!empty($_POST)){
 
@@ -85,7 +92,7 @@ $resul=pg_num_rows($sql);
 	<link rel="stylesheet" type="text/css" href="estilo/registrar_producto.css">
 </head>
 <body>
-<?php include"..\include\header.html" ?>
+<?php include"..\include\header.php"; ?>
 	<div class="contenedorr">
 		
 	

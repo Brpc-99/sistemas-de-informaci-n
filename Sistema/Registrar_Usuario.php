@@ -1,3 +1,14 @@
+<?php 
+session_start();
+if($_SESSION['rol']!=1)
+{
+	echo $_SESSION['rol'];
+	header("Location: Usuario.php");
+}
+
+ ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +20,7 @@
 	
 </head>
 <body>
-	<?php include"..\include\header.html" ?>
+	<?php include"..\include\header.php"; ?>
 
 	<div class="contenedor">
 		

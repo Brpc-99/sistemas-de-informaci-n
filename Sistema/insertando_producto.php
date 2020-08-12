@@ -1,5 +1,6 @@
 <?php 
 include"..\include/conexion.php";
+session_start();
 
 $nombre= $_POST['nombre'];
 $codigo_categoria= $_POST['codigo_categoria'];

@@ -1,6 +1,13 @@
 <?php 
 
 include"..\include/conexion.php";
+session_start();
+if($_SESSION['rol']!=1)
+{
+	echo $_SESSION['rol'];
+	header("Location: Proveedores.php");
+}
+
 
 if(!empty($_POST)){
 
@@ -61,7 +68,7 @@ $resul=pg_num_rows($sql);
 	<link rel="stylesheet" type="text/css" href="estilo\registrar_categoria.css">
 </head>
 <body>
-	<?php include"..\include\header.html" ?>
+	<?php include"..\include\header.php"; ?>
 	<div class="contenedor">
 		<form class="formulario" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 				<h2>Modificar Usuario</h2>

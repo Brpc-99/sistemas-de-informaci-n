@@ -1,3 +1,12 @@
+<?php session_start();
+if($_SESSION['rol']!=1)
+{
+	echo $_SESSION['rol'];
+	header("Location: Proveedores.php");
+}
+ ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +20,7 @@
 
 </head>
 <body>
-	<?php include"..\include\header.html" ?>
+	<?php include"..\include\header.php"; ?>
 
 	<div class="contenedor">
 			<form class="formulario" action="Insertando_proveedores.php" method="post">	<!--EN ACTION TENGO QUE PONER EL INSERTANDO PROVEEDORES CUNADO LO HAGA-->

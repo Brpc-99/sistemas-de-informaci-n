@@ -1,6 +1,6 @@
 <?php 
 	include"..\include/conexion.php";
-
+session_start();
 		if(!empty($_POST)){
 			$idusuario=$_POST['idusuario'];
 			$query_delete=pg_query($conexion, "DELETE FROM CATEGORIAS where  Codigo_categoria=$idusuario");
@@ -61,7 +61,7 @@
 	<link rel="stylesheet" type="text/css" href="estilo\estilo_eliminar_usuario.css">
 </head>
 <body>
-	<?php include"..\include\header.html" ?>
+	<?php include"..\include\header.php"; ?>
 
 	<section>
 		

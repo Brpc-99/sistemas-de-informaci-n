@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 include"..\include/conexion.php";
 
 //almacenamiento de los datos

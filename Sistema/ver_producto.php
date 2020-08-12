@@ -10,7 +10,7 @@ include"..\include/conexion.php";
 	<link rel="stylesheet" type="text/css" href="..\include\estilo_header.css">
 </head>
 <body>
-<?php include"..\include\header.html" ?>
+<?php include"..\include\header.php";?>
 
 </body>
 </html>

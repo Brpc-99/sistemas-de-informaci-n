@@ -1,3 +1,12 @@
+<?php 
+//session_start();
+if(empty($_SESSION['active']))
+{
+header("location: ..\iniciar sesion\iniciar_sesion.html");
+} 
+
+?>
+
 <header>
 <div class="contenedor">
 	<h1>Sistema Electrónico de Gestión de Farmacia</h1>
@@ -31,7 +40,7 @@
 			<img class="img_sesion" src="..\imagenes\usuario.png">
 			    </div>
 			    <div class="cerrar">
-			    	<p>Bienvenido: Brandon</p>
+			    	<p>Bienvenido: <?php echo $_SESSION['nombre'] ?></p>
 			    <a href="..\Sistema\cerrar_sesion.php">Cerrar Sesión</a>
 			    </div>
 			   

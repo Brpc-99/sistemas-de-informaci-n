@@ -78,7 +78,7 @@ $consulta="SELECT Codigo_usuario,Nombre,Apellido,Usuario,Correo,Tipo FROM USUARI
 	<link rel="stylesheet" type="text/css" href="estilo\estilos_usuario.css">
 </head>
 <body>
-	<?php include"..\include\header.html" ?>
+	<?php include"..\include\header.php"; ?>
 
 
 	<div class="registrar_usuario">

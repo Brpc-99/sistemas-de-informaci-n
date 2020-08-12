@@ -1,6 +1,14 @@
 <?php 
 	include"..\include/conexion.php";
 
+	session_start();
+if($_SESSION['rol']!=1)
+{
+	echo $_SESSION['rol'];
+	header("Location: Usuario.php");
+}
+
+
 		if(!empty($_POST)){
 			$idusuario=$_POST['idusuario'];
 			$query_delete=pg_query($conexion, "DELETE FROM USUARIOS where codigo_usuario=$idusuario");
@@ -61,7 +69,7 @@
 	<link rel="stylesheet" type="text/css" href="estilo\estilo_eliminar_usuario.css">
 </head>
 <body>
-	<?php include"..\include\header.html" ?>
+	<?php include"..\include\header.php"; ?>
 
 	<section>
 		

@@ -1,6 +1,14 @@
 <?php 
 	include"..\include/conexion.php";
 
+	session_start();
+if($_SESSION['rol']!=1)
+{
+	echo $_SESSION['rol'];
+	header("Location: Producto.php");
+}
+
+
 		if(!empty($_POST)){
 			$idusuario=$_POST['idusuario'];
 			$entregan_delete= pg_query($conexion,"DELETE FROM ENTREGAN WHERE Codigo_producto=$idusuario ");
@@ -62,7 +70,7 @@
 	<link rel="stylesheet" type="text/css" href="estilo\estilo_eliminar_usuario.css">
 </head>
 <body>
-	<?php include"..\include\header.html" ?>
+	<?php include"..\include\header.php"; ?>
 
 	<section>
 		

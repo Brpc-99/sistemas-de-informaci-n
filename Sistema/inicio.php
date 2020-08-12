@@ -1,3 +1,7 @@
+<?php 
+session_start();
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="..\include\estilo_footer.css">
 </head>
 <body>
-	<?php include"..\include\header.html" ?>
+	<?php include"..\include\header.php"; ?>
 
 
 	<footer>

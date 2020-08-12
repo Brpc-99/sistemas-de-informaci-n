@@ -1,6 +1,7 @@
 <?php 
 
 include"..\include/conexion.php";
+session_start();
 
 /*PAGINADOOOOOOR*/
 $sql_registro= pg_query($conexion,"SELECT COUNT(*) AS total_registro FROM PROVEEDORES"); /*Total de todos los registros*/
@@ -36,7 +37,7 @@ $resul= pg_query($conexion,$consulta);
 	<link rel="stylesheet" type="text/css" href="..\include\estilo_footer.css">
 </head>
 <body>
-	<?php include"..\include\header.html" ?>
+	<?php include"..\include\header.php"; ?>
 
 
 	<div class="registrar_usuario">

@@ -1,7 +1,7 @@
 <?php 
 
 include"..\include/conexion.php";
-
+session_start();
 if(!empty($_POST)){
 
 $iduser=$_POST['idusuario'];
@@ -73,7 +73,7 @@ $resul=pg_num_rows($sql);
 	<link rel="stylesheet" type="text/css" href="estilo/cargar_stock.css">
 </head>
 <body>
-<?php include"..\include\header.html" ?>
+<?php include"..\include\header.php"; ?>
 	<div class="contenedorr">
 		
 	

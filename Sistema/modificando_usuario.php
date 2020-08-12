@@ -1,6 +1,13 @@
 <?php 
 
 include"..\include/conexion.php";
+session_start();
+if($_SESSION['rol']!=1)
+{
+	echo $_SESSION['rol'];
+	header("Location: Usuario.php");
+}
+
 
 if(!empty($_POST)){
 
@@ -10,7 +17,7 @@ $apellido= $_POST['apellido'];
 $usuario= $_POST['usuario'];
 $clave= $_POST['clave'];
 $correo= $_POST['correo'];
-$palabra_segura= $_POST['respuesta_de_seguridad'];
+$palabra_segura= $_POST['palabra_segura'];
 $codigo= $_POST['codigo_rol'];
 
 
@@ -61,7 +68,7 @@ $resul=pg_num_rows($sql);
 		$usuario= $data['usuario'];
 		$clave= $data['clave'];
 		$correo= $data['correo'];
-		$palabra_segura= $data['respuesta_de_seguridad'];
+		$palabra_seguras= $data['respuesta_de_seguridad'];
 
 	}
 	
@@ -83,7 +90,7 @@ $resul=pg_num_rows($sql);
 	<link rel="stylesheet" type="text/css" href="estilo\registrar_usuario.css">
 </head>
 <body>
-	<?php include"..\include\header.html" ?>
+	<?php include"..\include\header.php"; ?>
 
 	<div class="contenedor">
 		
@@ -108,7 +115,7 @@ $resul=pg_num_rows($sql);
 				value="<?php echo $correo; ?>">
 				<br>
 				<input type="text" name="palabra_segura" placeholder="Palabra de Seguridad *" maxlength="10" id="palabra_segura" class="input_grande"
-				value="<?php echo $palabra_segura; ?>">
+				value="<?php echo $palabra_seguras; ?>">
 				<br>
 				<select name="codigo_rol" class="rol">
 					<option value="1">Administrador </option>

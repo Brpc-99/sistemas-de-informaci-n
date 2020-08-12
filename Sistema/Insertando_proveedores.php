@@ -1,6 +1,7 @@
 <?php 
 
 include"..\include/conexion.php";
+session_start();
 
 //almacenamiento de los datos
 $rut= $_POST['Rut'];
