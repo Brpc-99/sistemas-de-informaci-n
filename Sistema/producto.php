@@ -6,9 +6,9 @@ session_start();
 $transformado="";
 if(isset($_POST['enviar'])){
 
-$de=$_POST['desde'];
+$de=$_POST['desdes'];
 $ha=$_POST['hasta'];
-if(!empty($_POST['desde']) && !empty($_POST['hasta'])){
+if(!empty($_POST['desdes']) && !empty($_POST['hasta'])){
 $consulta_montos="SELECT SUM(P.total) as total
 FROM PRODUCTOS P
 WHERE P.Fecha BETWEEN '$de' and '$ha'";
@@ -42,7 +42,7 @@ $total_paginas= ceil($total_registro/$por_pagina);
 $consulta= "SELECT P.Codigo_producto,P.Nombre_Producto,P.Descripcion,C.Nombre_categoria,PR.Nombre,P.Fecha,P.Valor_unitario,
 P.Valor_de_venta,P.Stock
 FROM PRODUCTOS P,CATEGORIAS C,PROVEEDORES PR,ENTREGAN E
-WHERE P.Codigo_categoria=C.Codigo_categoria and P.Codigo_producto=E.Codigo_producto and E.Codigo_proveedores=PR.Codigo_proveedores
+WHERE  P.Codigo_categoria=C.Codigo_categoria and P.Codigo_producto=E.Codigo_producto and E.Codigo_proveedores=PR.Codigo_proveedores
 limit $por_pagina offset $desde; ";
 $resul= pg_query($conexion,$consulta);
 
@@ -68,7 +68,7 @@ $resul= pg_query($conexion,$consulta);
 	 action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>">
 					<label>Desde</label>
 					<br>
-					<input type="date" name="desde" value="<?php echo $de ?>">
+					<input type="date" name="desdes" value="<?php echo $de ?>">
 					<br>
 					<label>Hasta</label>
 					<br>

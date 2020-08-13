@@ -1,0 +1,214 @@
+.contenedorr{
+	float: left;
+	width: 65%;
+	
+}
+
+table{
+
+	border-collapse: collapse;
+	margin: auto;
+	width: 100%;
+
+}
+table td{
+	border: 1px solid #000;
+	padding: 15px;
+	font-size: 13px;
+
+}
+.encabezado{
+	background: #35B9B9;
+	font-weight: bold;
+	font-size: 10px;
+}
+.muestras:hover{
+background: #ccc;
+
+}
+
+.filtro{
+
+	width: 100%;
+	margin:auto;
+	background: #4D7D7D;
+
+
+}
+h2{
+	width: 100%;
+	height: 50px;
+	padding: 15px;
+	text-align: center;
+
+}
+.form_search{
+
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+
+}
+.form_search input{
+	padding: 5px;
+}
+.form_search select{
+	padding: 5px;
+}
+label{
+	padding: 10px;
+}
+.btn{
+	color: black;
+	width:10%;
+	padding: 8px;
+	background: #35B9B9;
+	border:0;
+	opacity: 0.8;
+	cursor: pointer;
+	border-radius: 20px;
+
+}
+
+
+
+.paginador{
+	margin: auto;
+	width: 60%;
+
+
+
+}
+.paginador ul{
+	padding: 15px;
+	list-style: none;
+	background: white;
+	margin-top: 15px;
+	display: flex;
+	justify-content: flex-end;
+}
+.paginador a, .pageSelected{
+
+	color: #428bca;
+	border: 1px solid #ddd;
+	padding: 5px;
+	display: inline-block;
+	font-size: 14px;
+	text-align: center;
+	width: 35px;
+}
+.paginador a:hover{
+
+	background: #ddd;
+}
+.pageSelected{
+	color: white;
+	background: #428bca;
+	border: 1px solid #428bca;
+}
+
+.registrar_producto{
+	width: 15%;
+	text-align: center;
+	
+}
+.registrar_producto > a{
+
+	background: #35B9B9;
+	color: white;
+	text-decoration: none;
+	padding: 10px;
+
+}
+
+
+.monto_total{
+
+	width: 30%;
+	height: 350px;
+	float: left;
+	padding: 20px;
+	margin-top: 40px;
+	
+}
+.formulario_monto{
+	width: 80%;
+	background: #4370E1;
+	padding: 10px;
+}
+.formulario_monto label{
+
+	display: inline-block;
+	padding: 10px;
+}
+.formulario_monto input{
+	padding: 10px;
+	width: 90%;
+} 
+.boton_buscar{
+	margin-top: 8px;
+	cursor: pointer;
+	border-radius: 20px;
+	background: #35B9B9;
+	border: 0;
+}
+.total{
+	width: 80%;
+	height: 100px;
+	padding: 10px;
+	background: #1E45A9;
+}
+.total label{
+	display: inline-block;
+	padding: 10px;
+	
+}
+.total input{
+
+	padding: 5px;
+	width: 90%;
+
+}
+.input{
+
+	width: 50%;
+	
+}
+h3{
+	text-align: center;
+	color: white;
+}
+
+.input_venta{
+	width: 25%;
+	padding: 5px;
+	margin-bottom: 8px;
+
+}
+.labels{
+	
+	width: 100%;
+
+}
+.veinticinco{
+	display: inline-block;
+	width: 24%;
+	text-align: center;
+	
+}
+.btn2{
+
+	font-size: 15px;
+	display: block;
+	margin: auto;
+	cursor: pointer;
+	background: #35B9B9;
+	border: 0;
+}
+.listas{
+	
+	margin-top: 10px;
+}
+.wrap{
+	background: #1F896E;
+}

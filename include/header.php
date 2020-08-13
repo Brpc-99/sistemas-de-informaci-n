@@ -25,9 +25,9 @@ header("location: ..\iniciar sesion\iniciar_sesion.html");
 				</ul>
 				</li>
 				<li><a href="..\Sistema\Proveedores.php">Proveedores</a></li>
-					<li><a href="#">Venta</a>
+					<li><a href="..\Sistema\venta.php">Venta</a>
 						<ul>
-							<li><a href="#">Lista de Ventas</a></li>
+							<li><a href="..\Sistema\Lista de ventas.php">Lista de Ventas</a></li>
 
 						</ul>
 					</li>

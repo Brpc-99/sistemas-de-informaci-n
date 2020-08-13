@@ -1,0 +1,38 @@
+
+footer{
+
+	width: 100%;
+	background: #11757D;
+	height: 90px;
+	position: relative; /* ciudao*/
+	bottom: 0;
+}
+.síguenos{
+	font-family: sans-serif;
+	font-size: 20px;
+}
+footer .iconos{
+	float: left;
+	width: 80%;
+	height: 80px;
+	padding: 0px 10px;
+	display: block;
+
+}
+footer span{
+	font-size: 50px;
+	padding: 10px;
+
+}
+footer .contacto{
+	float: left;
+	width: 20%;
+	height: 80px;
+}
+.siguenos{
+	width: 100%;
+	padding: 5px;
+}
+.gmail{
+	padding: 20px;
+}
