@@ -16,7 +16,7 @@ header("location: ..\iniciar sesion\iniciar_sesion.html");
 		<div class="menu">
 		<nav>
 			<ul class="subnav">
-				<li><a href="..\Sistema\inicio.php">Inicio</a></li>
+				<li><a href="..\Sistema\inicio_nuevo.php">Inicio</a></li>
 				<li><a href="..\Sistema\Usuario.php">Usuario</a></li>
 				<li><a href="..\Sistema\producto.php">Producto</a>
 				<ul>
@@ -27,7 +27,7 @@ header("location: ..\iniciar sesion\iniciar_sesion.html");
 				<li><a href="..\Sistema\Proveedores.php">Proveedores</a></li>
 					<li><a href="..\Sistema\venta.php">Venta</a>
 						<ul>
-							<li><a href="..\Sistema\Lista de ventas.php">Lista de Ventas</a></li>
+							<li><a href="..\Sistema\Lista de ventas.php">Lista</a></li>
 
 						</ul>
 					</li>

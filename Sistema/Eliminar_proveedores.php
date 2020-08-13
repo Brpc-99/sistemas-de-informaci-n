@@ -77,7 +77,7 @@ if($_SESSION['rol']!=1)
 	<section>
 		
 		<div class="delete">
-			<h2>¿Esta seguro que desea eliminar el registro?</h2>
+			<h2>¿Está seguro que desea eliminar el registro?</h2>
 			<p>Código: <span><?php echo $codigoP; ?></span></p>
             <p>Rut: <span><?php echo $rut; ?></span></p>
 			<p>Nombre: <span><?php echo $nombre; ?></span></p>

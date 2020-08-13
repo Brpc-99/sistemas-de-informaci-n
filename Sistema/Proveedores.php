@@ -53,7 +53,7 @@ $resul= pg_query($conexion,$consulta);
 	</div>
 	<table>
 		<tr class="encabezado">
-			<td>Codigo</td>
+			<td>Código</td>
 			<td>Rut</td>
 			<td>Nombre</td>
 			<td>Descripción</td>

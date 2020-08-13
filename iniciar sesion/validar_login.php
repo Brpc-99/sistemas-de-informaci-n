@@ -4,7 +4,7 @@ include"..\include/conexion.php";//conectando la base de datos
 
 if(!empty($_SESSION['active']))
 {
-header("location: ..\Sistema\inicio.php");
+header("location: ..\Sistema\inicio_nuevo.php");
 }else{
 $usuario= $_POST['usuario'];
 $clave= $_POST['clave'];
@@ -29,7 +29,7 @@ if($filas>0){
 
 	//sesiones
 
-	header("location: ..\Sistema\inicio.php"); // location es para redireccionar a otra pagina
+	header("location: ..\Sistema\inicio_nuevo.php"); // location es para redireccionar a otra pagina
 
 }else{
 

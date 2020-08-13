@@ -40,7 +40,7 @@ if(!$resultado){
 	
 	echo '<script>
 	alert("Registro insertado exitosamente");
-	
+	window.history.go(-2);
 	</script>';
 
 }
